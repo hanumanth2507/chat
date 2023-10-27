@@ -54,14 +54,17 @@ function scrollToBottom(){
 
 messageInput.addEventListener('focus', (e) => {
     socket.emit('feedback', {feedback: `${nameInput.value} is typing...`});
+    scrollToBottom();
 });
 
 messageInput.addEventListener('keypress', (e) => {
     socket.emit('feedback', {feedback: `${nameInput.value} is typing...`});
+    scrollToBottom();
 });
 
 messageInput.addEventListener('blur', (e) => {
     socket.emit('feedback', {feedback:``});
+    scrollToBottom();
 })
 
 socket.on('feedback', (data) =>{
