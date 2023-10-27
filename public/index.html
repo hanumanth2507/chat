@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body{
+            
+            background-color: #A4C2F1;
+            font-family: 'open sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .title{
+            margin: 20px 0;
+        }
+
+        .main{
+            border: 8px solid #7189b1;
+            background-color: #D2E0FB;
+            border-radius: 24px;
+            overflow: hidden;
+            /*  */
+        }
+        .name{
+            display: flex;
+            font-size: 50px;
+            font-weight: 700;
+            padding: 8px 16px;
+        }
+        .name-input{
+            border: none;
+            outline: none;
+            font-size: 24px;
+            background-color: #A4C2F1;
+            flex-grow: 1;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 24px;
+        }
+        .messages{
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 600px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .message-left, .message-right{
+            list-style: none;
+            padding: 8px 12px;
+            margin: 12px;
+            max-width: 250px;
+            font-size: 18px;
+            word-wrap: break-word;
+        }
+        .message-left{
+            border-radius: 20px 20px 20px 0px;
+            align-self: flex-start;
+            /* background-color: ; */
+            box-shadow: -2px 2px 4px;
+        }
+        .message-right{
+            border-radius: 20px 20px 0px 20px;
+            align-self: flex-end;
+            /* background-color: ; */
+            box-shadow: 2px 2px 4px;
+        }
+        .message-left>p>span, .message-right>p>span{
+            display: block;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .feedback{
+            font-size: 14px;
+            padding: 0px 16px 16px 16px;
+            text-align: center;
+        }
+
+        .message-form{
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            
+        }
+        .message-input{
+            flex-grow: 1;
+            height: 48px;
+            border: none;
+            outline: none;
+            padding: 0px 12px;
+        }
+        .message-submit{
+            height: 48px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            padding: 0px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">CHAT</h1>
+    <div class="main" id="main">
+        <div class="name" id="name">
+            <input type="text" class="name-input" id="name-input" value=" Unknown" maxlength="20">
+        </div>
+        <ul class="messages" id="messages">
+            <!-- <li class="message-left" id="message-left">
+                <p class="message" id="message">Hi!</p>
+                <span>Username________time</span>
+            </li>
+            <li class="message-right" id="message-right">
+                <p class="message" id="message">Hi!</p>
+                <span>Username________time</span>
+            </li>
+            <li class="message-feedback" id="message-feedback">
+                <p class="feedback" id="feedback">User is typing</p>
+            </li> -->
+        </ul>
+        <form class="message-form" id="message-form">
+            <input type="text" class="message-input" id="message-input" placeholder="Enter your message">
+            <button type="submit" class="message-submit" id="message-submit">Send</button>
+        </form>
+    </div>
+    <h3 class="client-count" id="client-count">Clients Connected:</h3>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
